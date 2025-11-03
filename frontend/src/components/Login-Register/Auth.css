@@ -1,0 +1,154 @@
+.main-login {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(15px);
+  padding: 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  transition: all 0.4s ease-in-out;
+  border-radius: 10px;
+}
+
+#title {
+  color: #333;
+  font-size: 30px;
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+
+#choice-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+button {
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.customer-btn {
+  background: linear-gradient(to right, #4a6baf, #6c7fd1);
+    border-radius: 20px;
+
+}
+
+.operator-btn {
+  background: linear-gradient(to right, #43cea2, #185a9d);
+    border-radius: 20px;
+
+}
+
+.admin-btn {
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+    border-radius: 20px;
+
+}
+
+.register-btn {
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+    border-radius: 20px;
+
+}
+
+.back-btn {
+  background: #777;
+  margin-top: 8px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 10px;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+input, select {
+  padding: 12px 18px;
+  border: 2px solid #ddd;
+  border-radius: 25px;
+  font-size: 16px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.85);
+  transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+  border-color: #4a6baf;
+  background-color: #fff;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+input, select {
+  padding: 10px;
+  border-radius: 25px;
+  border: 2px solid #ddd;
+  font-size: 16px;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  min-height: 6px;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .main-login {
+    margin: 10px;
+    padding: 20px;
+    width: 100%;
+  }
+  
+  #title {
+    font-size: 20px;
+  }
+  button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  input, select {
+    font-size: 14px;
+  }
+}
+
+
+
+
