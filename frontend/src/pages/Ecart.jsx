@@ -1,3 +1,9 @@
+/**
+ * Ecart Component - Main e-commerce page for displaying products, managing cart, and handling user interactions.
+ * Handles product filtering, cart operations, and navigation.
+ * @param {boolean} isLoggedIn - Indicates if the user is logged in.
+ * @param {function} handleLogout - Function to handle user logout.
+ */
 import React, { useState, useEffect, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Ecart.css";
@@ -6,17 +12,38 @@ import ProductDetailModal from "../components/Ecart/ProductDetailModal";
 import products from "../components/Ecart/EcartData";
 
 const Ecart = ({ isLoggedIn, handleLogout }) => {
+  // Navigation hook for redirecting users (e.g., to login if not authenticated)
   const navigate = useNavigate();
+
+  // State for cart drawer visibility
   const [cartOpen, setCartOpen] = useState(false);
+
+  // State for items in the cart, persisted in localStorage
   const [cartItems, setCartItems] = useState([]);
+
+  // State for search input and debounced version to optimize filtering
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
+
+  // State for filtering products by stock availability
   const [showInStockOnly, setShowInStockOnly] = useState(false);
+
+  // State for selected product category filter
   const [selectedCategory, setSelectedCategory] = useState("All");
+
+  // State for transition animation when category changes
   const [isTransitioning, setIsTransitioning] = useState(false);
+
+  // State for the product selected for modal display
   const [selectedProduct, setSelectedProduct] = useState(null);
+
+  // State for modal visibility
   const [modalOpen, setModalOpen] = useState(false);
+
+  // State for loading indicator during search debouncing
   const [isLoading, setIsLoading] = useState(false);
+
+  // State for error messages (e.g., localStorage issues)
   const [error, setError] = useState(null);
 
   const getPrice = (totalWeight, price50Str, price100Str) => {
@@ -84,27 +111,25 @@ const Ecart = ({ isLoggedIn, handleLogout }) => {
       return;
     }
     setCartItems((prev) => {
-      const quantityType = product.quantityType || '50g';
-      const cartKey = `${product.name}-${quantityType}`;
+      const quantityToAdd = parseInt(product.quantityType || '50');
+      const cartKey = product.name;
 
       const existing = prev.find((item) => item.cartKey === cartKey);
       let newCart;
       if (existing) {
-        const newCount = existing.count + 1;
-        const totalWeight = parseInt(quantityType) * newCount;
-        const newPrice = getPrice(totalWeight, existing.price50, existing.price100);
+        const newTotalWeight = existing.totalWeight + quantityToAdd;
+        const newPrice = getPrice(newTotalWeight, existing.price50, existing.price100);
         newCart = prev.map((item) =>
-          item.cartKey === cartKey ? { ...item, count: newCount, price: newPrice } : item
+          item.cartKey === cartKey ? { ...item, totalWeight: newTotalWeight, price: newPrice } : item
         );
       } else {
-        const totalWeight = parseInt(quantityType);
+        const totalWeight = quantityToAdd;
         const price = getPrice(totalWeight, product.price50, product.price100);
         newCart = [...prev, {
           ...product,
           cartKey,
-          quantityType,
-          price,
-          count: 1
+          totalWeight,
+          price
         }];
       }
       try {
@@ -129,14 +154,13 @@ const Ecart = ({ isLoggedIn, handleLogout }) => {
     setCartItems((prev) => {
       const existing = prev.find((item) => item.cartKey === product.cartKey);
       let newCart;
-      if (existing.count === 1) {
+      if (existing.totalWeight <= 50) {
         newCart = prev.filter((item) => item.cartKey !== product.cartKey);
       } else {
-        const newCount = existing.count - 1;
-        const totalWeight = parseInt(existing.quantityType) * newCount;
-        const newPrice = getPrice(totalWeight, existing.price50, existing.price100);
+        const newTotalWeight = existing.totalWeight - 50;
+        const newPrice = getPrice(newTotalWeight, existing.price50, existing.price100);
         newCart = prev.map((item) =>
-          item.cartKey === product.cartKey ? { ...item, count: newCount, price: newPrice } : item
+          item.cartKey === product.cartKey ? { ...item, totalWeight: newTotalWeight, price: newPrice } : item
         );
       }
       try {
@@ -169,7 +193,7 @@ const Ecart = ({ isLoggedIn, handleLogout }) => {
     let message = "Hello! I want to order:\n";
 
     cartItems.forEach((item) => {
-      message += `- ${item.name} = ₹${item.price} (Total weight: ${parseInt(item.quantityType) * item.count}g)\n`;
+      message += `- ${item.name} = ₹${item.price} (Total weight: ${item.totalWeight}g)\n`;
     });
 
     const total = cartItems.reduce(
@@ -295,10 +319,10 @@ const Ecart = ({ isLoggedIn, handleLogout }) => {
                 <button
                   className="btn btn-ecart px-3"
                   onClick={handleCartClick}
-                  aria-label={`Open cart with ${cartItems.reduce((acc, item) => acc + item.count, 0)} items`}
+                  aria-label={`Open cart with ${cartItems.length} items`}
                 >
                   <i className="bi bi-cart4 me-2" aria-hidden="true"></i>
-                  E-Cart ({cartItems.reduce((acc, item) => acc + item.count, 0)})
+                  E-Cart ({cartItems.length})
                 </button>
               )}
 
@@ -391,7 +415,7 @@ const Ecart = ({ isLoggedIn, handleLogout }) => {
                     <div>
                       <strong>{item.name}</strong> - ₹{item.price}
                       <br />
-                      <small className="text-muted">Total weight: {parseInt(item.quantityType) * item.count}g</small>
+                      <small className="text-muted">Total weight: {item.totalWeight}g</small>
                     </div>
                     <div className="d-flex align-items-center gap-2" role="group" aria-label={`Actions for ${item.name}`}>
                       <button
@@ -401,7 +425,7 @@ const Ecart = ({ isLoggedIn, handleLogout }) => {
                       >
                         -
                       </button>
-                      <span aria-label={`Quantity: ${item.count}`}>{item.count}</span>
+                      <span aria-label={`Quantity: ${item.totalWeight / 50}`}>{item.totalWeight / 50}</span>
                       <button
                         className="btn btn-sm btn-outline-success"
                         onClick={() => handleAddToCart(item)}
