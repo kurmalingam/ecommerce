@@ -1,8 +1,0 @@
-- [ ] Modify handleAddToCart in Ecart.jsx to use product.name as cartKey and combine quantities into totalWeight
-- [ ] Update handleRemoveFromCart to decrease totalWeight by 50g
-- [ ] Update handleDeleteFromCart to remove the item
-- [ ] Update cart display to show totalWeight instead of count and quantityType
-- [ ] Update cart count in navbar to cartItems.length
-- [ ] Update WhatsApp checkout message to use totalWeight
-- [ ] Ensure localStorage saves the new format
-- [ ] Test the changes (run dev server and check functionality)
