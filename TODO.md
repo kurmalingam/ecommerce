@@ -1,6 +1,0 @@
-- [ ] Update backend/Login-Register/models/User.js: Remove regType field
-- [ ] Update backend/Login-Register/controllers/authController.js: Remove regType from registerUser, remove regType update in loginUser, remove role from JWT and response
-- [ ] Update frontend/src/components/Login-Register/RegisterForm.jsx: Remove regType from form state and submission
-- [ ] Update frontend/src/components/Login-Register/LoginForm.jsx: Remove role prop, remove localStorage.setItem("userRole", "customer")
-- [ ] Update frontend/src/components/Login-Register/AuthSelection.jsx: Change button text to "Login"
-- [ ] Update frontend/src/pages/AuthPage.jsx: Change route from /customer to /login, remove role prop from LoginForm

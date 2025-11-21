@@ -1,8 +1,9 @@
 import './EcartCard.css';
 
 const EcartCard = ({ name, category, price50, price100, stock, image, onAddToCart, onCardClick }) => {
+  const categoryClass = category.toLowerCase().replace(' ', '-');
   return (
-    <div className="ecart-card" onClick={onCardClick}>
+    <div className={`ecart-card ${categoryClass}`} onClick={onCardClick}>
       <img src={image} alt={name} className="ecart-img" />
       <h5>{name}</h5>
       <p className="category">{category}</p>

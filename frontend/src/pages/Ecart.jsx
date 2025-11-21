@@ -234,7 +234,7 @@ const Ecart = ({ isLoggedIn, handleLogout }) => {
               alt="Dry Pandas Logo"
               className="logo-img img-fluid"
             />
-            <h4 className="m-0 brand-text">Drypanda Foods-Ecart</h4>
+            <h4 className="m-0 brand-text">FoodNex</h4>
           </Link>
 
           <button
@@ -386,7 +386,7 @@ const Ecart = ({ isLoggedIn, handleLogout }) => {
 
       <footer className="text-white text-center py-3 mt-auto">
         <div className="small">
-          &copy; 2025 <strong>Dry Panda Foods</strong>. All rights reserved.
+          &copy; 2025 <strong>FoodNex</strong>. All rights reserved.
         </div>
       </footer>
 

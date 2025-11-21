@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 const API_URL = import.meta.env.VITE_API_URL;
 import { useNavigate } from 'react-router-dom';
 
-const LoginForm = ({ setIsLoggedIn }) => {
+const LoginForm = ({ role, setIsLoggedIn }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();

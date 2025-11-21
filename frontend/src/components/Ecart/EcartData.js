@@ -7,7 +7,7 @@ const products = [
     price100: "₹60 (100 gms)",
     price: 40, // default to 50g
     stock: true,
-    image: "images/1.png",
+    image: "images/Moringa powder drumstick.png",
   },
   {
     name: "Karuvepillai Idly/Rice Podi",
@@ -16,7 +16,7 @@ const products = [
     price100: "₹60 (100 gms)",
     price: 40,
     stock: true,
-    image: "images/1.png",
+    image: "images/pure curry leaf powder.png",
   },
   {
     name: "Sambar Podi",
@@ -25,7 +25,7 @@ const products = [
     price100: "₹60 (100 gms)",
     price: 40,
     stock: true,
-    image: "images/1.png",
+    image: "images/Sambar Powder.png",
   },
 
   // 🍚 RICE MIX
@@ -36,7 +36,7 @@ const products = [
     price100: "₹110 (100 gms)",
     price: 65,
     stock: true,
-    image: "images/1.png",
+    image: "images/SiruKeerai rice mix.png",
   },
   {
     name: "Poondu Rice Mix",
@@ -45,7 +45,7 @@ const products = [
     price100: "₹100 (100 gms)",
     price: 50,
     stock: true,
-    image: "images/1.png",
+    image: "images/GarlicRice mix.png",
   },
   {
     name: "Paruppu Rice Mix",
@@ -54,7 +54,7 @@ const products = [
     price100: "₹80 (100 gms)",
     price: 50,
     stock: true,
-    image: "images/1.png",
+    image: "images/paruppu podi.png",
   },
   {
     name: "Perandai Rice Mix",
@@ -63,7 +63,7 @@ const products = [
     price100: "₹110 (100 gms)",
     price: 60,
     stock: true,
-    image: "images/1.png",
+    image: "images/Pirandai veldt grape rice mix.png",
   },
   {
     name: "Nellikai Rice Mix",
@@ -72,7 +72,7 @@ const products = [
     price100: "₹110 (100 gms)",
     price: 65,
     stock: true,
-    image: "images/1.png",
+    image: "images/nellikkai gooseberry rice mix.png",
   },
 
   // 🍵 SOUP MIX
@@ -83,7 +83,7 @@ const products = [
     price100: null,
     price: 85,
     stock: true,
-    image: "images/1.png",
+    image: "images/Moringa soup.png",
   },
   {
     name: "Nellikai Soup Mix (13 Soups)",
@@ -92,7 +92,7 @@ const products = [
     price100: null,
     price: 85,
     stock: true,
-    image: "images/1.png",
+    image: "images/nellikkai soup mix powder.png",
   },
   {
     name: "Banana Stem Soup Mix (13 Soups)",
@@ -101,7 +101,7 @@ const products = [
     price100: null,
     price: 85,
     stock: true,
-    image: "images/1.png",
+    image: "images/banana stem soup mix powder.png",
   },
   {
     name: "Avaram Poo Soup Mix (16 Soups)",
@@ -110,7 +110,7 @@ const products = [
     price100: null,
     price: 110,
     stock: true,
-    image: "images/1.png",
+    image: "images/Avarampoo soup mix.png",
   },
 
   // 🌼 POWDER
@@ -121,7 +121,7 @@ const products = [
     price100: "₹110 (100 gms)",
     price: 65,
     stock: true,
-    image: "images/1.png",
+    image: "images/Pure gooseberry powder.png",
   },
   {
     name: "Pure Avaram Poo Powder",
@@ -130,7 +130,7 @@ const products = [
     price100: "₹170 (100 gms)",
     price: 90,
     stock: true,
-    image: "images/1.png",
+    image: "images/Pure avarampoo powder.png",
   },
   {
     name: "Pure Karuvepillai Powder",
@@ -139,7 +139,7 @@ const products = [
     price100: "₹100 (100 gms)",
     price: 50,
     stock: true,
-    image: "images/1.png",
+    image: "images/kariveppilai powder.png",
   },
 ];
 
