@@ -5,6 +5,25 @@ const dotenv = require('dotenv');
 const authRoutes = require('./Login-Register/routes/authRoutes');
 
 dotenv.config();
+
+// Validate environment variables
+if (!process.env.JWT_SECRET) {
+  console.error('JWT_SECRET is not defined in environment variables');
+  process.exit(1);
+}
+if (!process.env.MONGO_URI) {
+  console.error('MONGO_URI is not defined in environment variables');
+  process.exit(1);
+}
+if (!process.env.RECAPTCHA_SECRET) {
+  console.error('RECAPTCHA_SECRET is not defined in environment variables');
+  process.exit(1);
+}
+if (!process.env.PORT) {
+  console.error('PORT is not defined in environment variables');
+  process.exit(1);
+}
+
 const app = express();
 
 app.use(cors());

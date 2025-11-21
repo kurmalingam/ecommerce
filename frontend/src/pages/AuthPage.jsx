@@ -16,8 +16,6 @@ const AuthPage = ({ setIsLoggedIn }) => {
       <Routes>
         <Route index element={<AuthSelection />} />
         <Route path="customer" element={<LoginForm role="customer" setIsLoggedIn={setIsLoggedIn} />} />
-        <Route path="operator" element={<LoginForm role="operator" setIsLoggedIn={setIsLoggedIn} />} />
-        <Route path="admin" element={<LoginForm role="admin" setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="register" element={<RegisterForm />} />
       </Routes>
     </div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 const API_URL = import.meta.env.VITE_API_URL;
 import { useNavigate } from 'react-router-dom';
 
-const LoginForm = ({ role, setIsLoggedIn }) => {
+const LoginForm = ({ setIsLoggedIn }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const LoginForm = ({ role, setIsLoggedIn }) => {
       const response = await fetch(`${API_URL}/api/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password, role }),
+        body: JSON.stringify({ email, password }),
       });
 
       const data = await response.json();
@@ -22,13 +22,9 @@ const LoginForm = ({ role, setIsLoggedIn }) => {
       if (data.success) {
         alert('Login successful!');
         localStorage.setItem('token', data.token);
-        localStorage.setItem("userRole",role);
+        localStorage.setItem("userRole", "customer");
         setIsLoggedIn(true);       // ✅ Set login state
-      if (role === 'customer') {
         navigate('/');   // Customer goes to e-cart
-      } else {
-        navigate('/');        // Other roles go to home
-      }
 
       } else {
         alert(data.message || 'Login failed');
