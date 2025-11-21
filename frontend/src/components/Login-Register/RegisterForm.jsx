@@ -6,6 +6,7 @@ import './Auth.css';
 
 const RegisterForm = () => {
   const [form, setForm] = useState({
+    regType: '',
     username: '',
     email: '',
     password: '',
@@ -40,6 +41,7 @@ const RegisterForm = () => {
 
   const validateForm = () => {
     const newErrors = {};
+    if (!form.regType) newErrors.regType = 'Select a registration type.';
     if (!form.username.trim()) newErrors.username = 'Username is required.';
     if (!form.email.trim()) newErrors.email = 'Email is required.';
     if (!form.password) newErrors.password = 'Password is required.';
@@ -74,6 +76,7 @@ const RegisterForm = () => {
       if (data.success) {
         alert('Registration successful!');
         setForm({
+          regType: '',
           username: '',
           email: '',
           password: '',
@@ -98,6 +101,14 @@ const RegisterForm = () => {
 
   return (
     <form id="register-form" onSubmit={handleRegister} className="form-container">
+      <div className="form-group">
+        <select name="regType" value={form.regType} onChange={handleChange}>
+          <option value="">Select Registration Type</option>
+          <option value="customer">Customer</option>
+        </select>
+        <small className="error">{errors.regType}</small>
+      </div>
+
       <div className="form-group">
         <input type="text" name="username" placeholder="Fullname" value={form.username} onChange={handleChange} />
         <small className="error">{errors.username}</small>

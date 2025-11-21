@@ -14,7 +14,7 @@ const LoginForm = ({ setIsLoggedIn }) => {
       const response = await fetch(`${API_URL}/api/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password, role }),
       });
 
       const data = await response.json();
@@ -22,9 +22,10 @@ const LoginForm = ({ setIsLoggedIn }) => {
       if (data.success) {
         alert('Login successful!');
         localStorage.setItem('token', data.token);
-        localStorage.setItem("userRole", "customer");
+        localStorage.setItem("userRole",role);
         setIsLoggedIn(true);       // ✅ Set login state
-        navigate('/');   // Customer goes to e-cart
+      
+        navigate('/');        // Other roles go to home
 
       } else {
         alert(data.message || 'Login failed');
