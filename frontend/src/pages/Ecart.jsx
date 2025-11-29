@@ -190,7 +190,9 @@ const Ecart = ({ isLoggedIn, handleLogout }) => {
     if (cartItems.length === 0) return;
 
     const phoneNumber = "1234567890"; // Replace with your WhatsApp number
-    let message = "Hello! I want to order:\n";
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    console.log('User data from localStorage:', user); // Debug log
+    let message = `Hello! I want to order:\n\nCustomer Details:\nName: ${user.username || 'N/A'}\nEmail: ${user.email || 'N/A'}\nContact: ${user.contact || 'N/A'}\n\nOrder Details:\n`;
 
     cartItems.forEach((item) => {
       message += `- ${item.name} = ₹${item.price} (Total weight: ${item.totalWeight}g)\n`;
@@ -200,7 +202,7 @@ const Ecart = ({ isLoggedIn, handleLogout }) => {
       (acc, item) => acc + item.price,
       0
     );
-    message += `Total: ₹${total}`;
+    message += `\nTotal: ₹${total}`;
 
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank");
@@ -344,7 +346,12 @@ const Ecart = ({ isLoggedIn, handleLogout }) => {
         </div>
       </nav>
 
-
+      {isLoggedIn && (
+        <div className="alert alert-success alert-dismissible fade show" role="alert" style={{ marginTop: '80px', marginBottom: '0.5rem' }}>
+          <strong>Welcome {JSON.parse(localStorage.getItem('user') || '{}').username || 'User'}!</strong> Enjoy our delicious products.
+          <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      )}
 
       <div className={`ecart-body flex-grow-1 ${isTransitioning ? 'transitioning' : ''}`}>
         {error ? (

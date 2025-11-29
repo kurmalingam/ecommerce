@@ -55,59 +55,76 @@
   text-shadow: 0 1px 2px rgba(220, 53, 69, 0.3);
 }
 
-/* Category-specific styles - all using the same green theme to match the decent images */
+.ecart-card button {
+  background-color: #8B4513 !important;
+  border-color: #8B4513 !important;
+  color: white !important;
+}
+
+.ecart-card button:hover:not(:disabled) {
+  background-color: #A0522D !important;
+  border-color: #A0522D !important;
+}
+
+.ecart-card button:disabled {
+  background-color: #ccc !important;
+  border-color: #ccc !important;
+  color: #666 !important;
+}
+
+/* Category-specific styles - all using the same coffee theme to match the decent images */
 .ecart-card.podi {
-  border-color: #28a745;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-color: #8B4513;
+  background: linear-gradient(135deg, #FFF8DC 0%, #D2B48C 100%);
 }
 
 .ecart-card.podi::before {
-  background: linear-gradient(90deg, #28a745, #20c997, #17a2b8);
+  background: linear-gradient(90deg, #D2B48C, #8B4513, #A0522D);
 }
 
 .ecart-card.podi:hover {
-  border-color: #20c997;
-  box-shadow: 0 12px 25px rgba(40, 167, 69, 0.25);
+  border-color: #A0522D;
+  box-shadow: 0 12px 25px rgba(139, 69, 19, 0.25);
 }
 
 .ecart-card.rice-mix {
-  border-color: #28a745;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-color: #8B4513;
+  background: linear-gradient(135deg, #FFF8DC 0%, #D2B48C 100%);
 }
 
 .ecart-card.rice-mix::before {
-  background: linear-gradient(90deg, #28a745, #20c997, #17a2b8);
+  background: linear-gradient(90deg, #D2B48C, #8B4513, #A0522D);
 }
 
 .ecart-card.rice-mix:hover {
-  border-color: #20c997;
-  box-shadow: 0 12px 25px rgba(40, 167, 69, 0.25);
+  border-color: #A0522D;
+  box-shadow: 0 12px 25px rgba(139, 69, 19, 0.25);
 }
 
 .ecart-card.soup-mix {
-  border-color: #28a745;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-color: #8B4513;
+  background: linear-gradient(135deg, #FFF8DC 0%, #D2B48C 100%);
 }
 
 .ecart-card.soup-mix::before {
-  background: linear-gradient(90deg, #28a745, #20c997, #17a2b8);
+  background: linear-gradient(90deg, #D2B48C, #8B4513, #A0522D);
 }
 
 .ecart-card.soup-mix:hover {
-  border-color: #20c997;
-  box-shadow: 0 12px 25px rgba(40, 167, 69, 0.25);
+  border-color: #A0522D;
+  box-shadow: 0 12px 25px rgba(139, 69, 19, 0.25);
 }
 
 .ecart-card.powder {
-  border-color: #28a745;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-color: #8B4513;
+  background: linear-gradient(135deg, #FFF8DC 0%, #D2B48C 100%);
 }
 
 .ecart-card.powder::before {
-  background: linear-gradient(90deg, #28a745, #20c997, #17a2b8);
+  background: linear-gradient(90deg, #D2B48C, #8B4513, #A0522D);
 }
 
 .ecart-card.powder:hover {
-  border-color: #20c997;
-  box-shadow: 0 12px 25px rgba(40, 167, 69, 0.25);
+  border-color: #A0522D;
+  box-shadow: 0 12px 25px rgba(139, 69, 19, 0.25);
 }

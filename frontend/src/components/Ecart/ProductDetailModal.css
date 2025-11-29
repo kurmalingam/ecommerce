@@ -14,8 +14,8 @@
 
 /* ===== Modal Content ===== */
 .custom-modal-content {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
-  border: 3px solid #28a745 !important;
+  background: linear-gradient(135deg, #FFF8DC 0%, #A0522D 100%) !important;
+  border: 3px solid #8B4513 !important;
   border-radius: 15px !important;
   padding: 25px;
   max-width: 400px;
@@ -24,7 +24,7 @@
   overflow-y: auto;
   position: relative;
   text-align: center;
-  box-shadow: 0 15px 35px rgba(40, 167, 69, 0.2);
+  box-shadow: 0 15px 35px rgba(139, 69, 19, 0.2);
   animation: fadeIn 0.3s ease-out !important;
   position: relative;
   overflow: hidden;
@@ -37,7 +37,7 @@
   left: 0;
   right: 0;
   height: 6px;
-  background: linear-gradient(90deg, #28a745, #20c997, #17a2b8, #6f42c1);
+  background: linear-gradient(90deg, #D2B48C, #8B4513, #A0522D, #FFF8DC);
 }
 
 @keyframes fadeIn {
@@ -135,14 +135,14 @@
   font-size: 1.1em;
   border-radius: 8px;
   border: none;
-  background-color: #28a745;
+  background-color: #8B4513;
   color: white;
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
 .custom-modal-add-btn:hover:not(:disabled) {
-  background-color: #218838;
+  background-color: #A0522D;
 }
 
 .custom-modal-add-btn:disabled {

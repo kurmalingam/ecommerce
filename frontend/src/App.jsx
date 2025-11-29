@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Ecart from './pages/Ecart';
 import AuthPage from './pages/AuthPage';
-
+import './App.css';
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -17,6 +17,7 @@ const App = () => {
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('userRole');
+    localStorage.removeItem('user'); // Clear user data on logout
     setIsLoggedIn(false);
   };
 

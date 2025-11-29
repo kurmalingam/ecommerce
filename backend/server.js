@@ -33,6 +33,8 @@ app.use('/api', authRoutes); // All auth-related routes
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  maxPoolSize: 10, // Increase connection pool size
+  serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
 })
 .then(() => {
   console.log('Connected to MongoDB Atlas');

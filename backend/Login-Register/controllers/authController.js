@@ -4,26 +4,40 @@ const jwt = require('jsonwebtoken');
 const axios = require('axios');
 
 const registerUser = async (req, res) => {
-  const { username, email, password, confirmPassword, contact, recaptchaToken } = req.body;
+  console.time('registerTotal');
+  const { regType, username, email, password, confirmPassword, contact, recaptchaToken } = req.body;
 
   // 1. Validate reCAPTCHA
+  console.time('recaptchaVerify');
   const secret = process.env.RECAPTCHA_SECRET;
   const verifyURL = `https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${recaptchaToken}`;
   const recaptchaRes = await axios.post(verifyURL);
+  console.timeEnd('recaptchaVerify');
   if (!recaptchaRes.data.success) {
+    console.timeEnd('registerTotal');
     return res.status(400).json({ success: false, message: 'reCAPTCHA failed' });
   }
 
   // 2. Check if user exists
-  const existingUser = await User.findOne({ email });
-  if (existingUser) return res.status(400).json({ success: false, message: 'Email already in use' });
+  console.time('findUser');
+  const existingUser = await User.findOne({ email }).lean();
+  console.timeEnd('findUser');
+  if (existingUser) {
+    console.timeEnd('registerTotal');
+    return res.status(400).json({ success: false, message: 'Email already in use' });
+  }
 
   // 3. Hash Password
+  console.time('bcryptHash');
   const hashedPwd = await bcrypt.hash(password, 10);
+  console.timeEnd('bcryptHash');
 
-  const newUser = new User({ username, email, password: hashedPwd, contact });
+  console.time('saveUser');
+  const newUser = new User({ regType, username, email, password: hashedPwd, contact });
   await newUser.save();
+  console.timeEnd('saveUser');
 
+  console.timeEnd('registerTotal');
   res.json({ success: true, message: 'User registered' });
 };
 
@@ -32,7 +46,7 @@ const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
   console.time('findUser');
-  const user = await User.findOne({ email });
+  const user = await User.findOne({ email }).lean();
   console.timeEnd('findUser');
   if (!user) {
     console.timeEnd('loginTotal');
@@ -51,7 +65,7 @@ const loginUser = async (req, res) => {
   const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
   console.timeEnd('jwtSign');
   console.timeEnd('loginTotal');
-  res.json({ success: true, token, user: { id: user._id, username: user.username } });
+  res.json({ success: true, token, user: { id: user._id, username: user.username, email: user.email, contact: user.contact } });
 };
 
 module.exports = { registerUser, loginUser };

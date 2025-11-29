@@ -20,11 +20,13 @@ const LoginForm = ({ role, setIsLoggedIn }) => {
       const data = await response.json();
 
       if (data.success) {
+        console.log('User data from login:', data.user); // Debug log
         alert('Login successful!');
         localStorage.setItem('token', data.token);
-        localStorage.setItem("userRole",role);
-        setIsLoggedIn(true);       // ✅ Set login state
-      
+        localStorage.setItem("userRole", role);
+        localStorage.setItem('user', JSON.stringify(data.user)); // Store user details
+        setIsLoggedIn(true);
+
         navigate('/');        // Other roles go to home
 
       } else {

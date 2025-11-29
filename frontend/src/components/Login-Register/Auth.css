@@ -41,9 +41,8 @@ button:hover {
 }
 
 .customer-btn {
-  background: linear-gradient(to right, #4a6baf, #6c7fd1);
+  background: linear-gradient(90deg, #b87722, #8B4513);
     border-radius: 20px;
-
 }
 
 .operator-btn {
@@ -53,7 +52,7 @@ button:hover {
 }
 
 .admin-btn {
-  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  background: linear-gradient(to right, #D2B48C, #8B4513);
     border-radius: 20px;
 
 }

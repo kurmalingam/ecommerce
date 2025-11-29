@@ -23,28 +23,7 @@ const ProductDetailModal = ({ product, isOpen, onClose, onAddToCart }) => {
           {product.stock ? 'In Stock' : 'Out of Stock'}
         </p>
 
-        <div className="d-flex gap-2">
-          <button
-            className="custom-modal-add-btn btn btn-success flex-fill"
-            disabled={!product.stock}
-            onClick={() => {
-              onAddToCart({ ...product, quantityType: '50g' });
-              onClose();
-            }}
-          >
-            {product.stock ? 'Add 50g' : 'Not Available'}
-          </button>
-          <button
-            className="custom-modal-add-btn btn btn-success flex-fill"
-            disabled={!product.stock || !product.price100}
-            onClick={() => {
-              onAddToCart({ ...product, quantityType: '100g' });
-              onClose();
-            }}
-          >
-            {product.stock && product.price100 ? 'Add 100g' : 'Not Available'}
-          </button>
-        </div>
+
       </div>
     </div>
   );
